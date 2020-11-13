@@ -10,7 +10,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uni = IERC20(0xf043c39a106db6b58c76995f30ba35fd211c3b76);
+    IERC20 public uni = IERC20(0xF043c39A106db6B58C76995F30Ba35fD211c3b76);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -37,7 +37,7 @@ contract LPTokenWrapper {
 }
 
 contract Unipool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public apy = IERC20(0x95a4492f028aa1fd432ea71146b433e7b4446611);
+    IERC20 public apy = IERC20(0x95a4492F028aa1fd432Ea71146b433E7B4446611);
     uint256 public constant DURATION = 7 days;
 
     uint256 public periodFinish = 0;
