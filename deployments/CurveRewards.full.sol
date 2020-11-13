@@ -1,4 +1,3 @@
-
 // File: @openzeppelin/contracts/math/Math.sol
 
 pragma solidity ^0.5.0;
@@ -562,7 +561,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uni = IERC20(0xC25a3A3b969415c80451098fa907EC722572917F);
+    IERC20 public uni = IERC20(0xBbB8eeA618861940FaDEf3071e79458d4c2B42e3);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -589,7 +588,8 @@ contract LPTokenWrapper {
 }
 
 contract CurveRewards is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public snx = IERC20(0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F);
+    IERC20 public snx = IERC20(0x63FD300bDF6EB55ee7Bf7e38F54Df8Adf16Dc8f5);
+    
     uint256 public constant DURATION = 7 days;
 
     uint256 public periodFinish = 0;
