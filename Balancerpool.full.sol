@@ -549,7 +549,7 @@ contract IRewardDistributionRecipient is Ownable {
     }
 }
 
-// File: contracts/Unipool.sol
+// File: contracts/Balancerpool.sol
 
 pragma solidity ^0.5.0;
 
@@ -562,7 +562,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uni = IERC20(0xF043c39A106db6B58C76995F30Ba35fD211c3b76);
+    IERC20 public bpt = IERC20(0xbC8B1f78ff5a0baF9945E145832ad79C494d4CF6);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -578,17 +578,17 @@ contract LPTokenWrapper {
     function stake(uint256 amount) public {
         _totalSupply = _totalSupply.add(amount);
         _balances[msg.sender] = _balances[msg.sender].add(amount);
-        uni.safeTransferFrom(msg.sender, address(this), amount);
+        bpt.safeTransferFrom(msg.sender, address(this), amount);
     }
 
     function withdraw(uint256 amount) public {
         _totalSupply = _totalSupply.sub(amount);
         _balances[msg.sender] = _balances[msg.sender].sub(amount);
-        uni.safeTransfer(msg.sender, amount);
+        bpt.safeTransfer(msg.sender, amount);
     }
 }
 
-contract Unipool is LPTokenWrapper, IRewardDistributionRecipient {
+contract Balancerpool is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public apy = IERC20(0x95a4492F028aa1fd432Ea71146b433E7B4446611);
     uint256 public constant DURATION = 7 days;
 
