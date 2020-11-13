@@ -10,7 +10,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uni = IERC20(0xf043c39a106db6b58c76995f30ba35fd211c3b76);
+    IERC20 public bpt = IERC20(0xbc8b1f78ff5a0baf9945e145832ad79c494d4cf6);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -26,17 +26,17 @@ contract LPTokenWrapper {
     function stake(uint256 amount) public {
         _totalSupply = _totalSupply.add(amount);
         _balances[msg.sender] = _balances[msg.sender].add(amount);
-        uni.safeTransferFrom(msg.sender, address(this), amount);
+        bpt.safeTransferFrom(msg.sender, address(this), amount);
     }
 
     function withdraw(uint256 amount) public {
         _totalSupply = _totalSupply.sub(amount);
         _balances[msg.sender] = _balances[msg.sender].sub(amount);
-        uni.safeTransfer(msg.sender, amount);
+        bpt.safeTransfer(msg.sender, amount);
     }
 }
 
-contract Unipool is LPTokenWrapper, IRewardDistributionRecipient {
+contract Balancerpool is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public apy = IERC20(0x95a4492f028aa1fd432ea71146b433e7b4446611);
     uint256 public constant DURATION = 7 days;
 
