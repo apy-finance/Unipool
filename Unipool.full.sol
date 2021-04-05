@@ -680,7 +680,7 @@ contract LPTokenWrapper {
 }
 
 contract Unipool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public apy = IERC20(0x95a4492F028aa1fd432Ea71146b433E7B4446611);
+    IERC20 public apy = IERC20(0x63FD300bDF6EB55ee7Bf7e38F54Df8Adf16Dc8f5);
     uint256 public constant DURATION = 7 days;
 
     uint256 public periodFinish = 0;
